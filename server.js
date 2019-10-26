@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const connectDB = require('./config/db');
 const fileUpload = require('express-fileupload');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 
 dotenv.config({ path: './config/config.env' });
 
@@ -31,6 +32,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Body parser
 app.use(express.json());
+
+//Cookie parser
+app.use(cookieParser());
 
 //Mount routes
 app.use('/api/v1/bootcamps', bootcamps);
